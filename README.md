@@ -14,7 +14,9 @@ u(x_i, y_j,z_k) = 1/6 * [u(x_i-1, y_j,z_k) + u(x_i+1, y_j,z_k) + u(x_i, y_j-1,z_
 
 In order to solve the equation, the boundary values must be known. In this work the value of the boundary points are calculated with exact() function and it is given as f = x*y*z.
 
-To exploit MPI, I divided the domain into subcubes. Each processor works on a subcube of the domain and exchanges the values in the boundaries. I assigned the subcubes to processors as in the example. Also added ghost cells to do the computations easily.
+To exploit MPI, I divided the domain into subcubes. Each processor works on a subcube of the domain and exchanges the values in the boundaries. I assigned the subcubes to processors as in the example. (The blue numbers are the processor ids.) Also added ghost cells to do the computations easily.
+
+Example:
 
 ![alt text](https://i.ibb.co/dPBWNrZ/cube.jpg)
 
