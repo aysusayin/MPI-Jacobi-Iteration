@@ -13,6 +13,7 @@ int s;
 int cube_edge_size;
 int world_rank;
 const double ERROR_THRESHOLD = 10E-10;
+bool silent_flag = false;
 
 struct Point {
   double x;
@@ -41,7 +42,22 @@ int main(int argc, char *argv[]) {
   MPI_Datatype MPI_xy_plane;
   MPI_Datatype MPI_yz_plane;
   MPI_Datatype MPI_xz_plane;
-  N = atof(argv[1]);
+  if (argc > 2) {
+    string option(argv[1]);
+    if (option.compare("--silent") == 0) {
+      N = atof(argv[2]);
+      silent_flag = true;
+    } else {
+      if (world_rank == 0) {
+        printf("Invalid argument");
+      }
+      MPI_Finalize();
+      return 0;
+    }
+  } else {
+    N = atof(argv[1]);
+  }
+
   s = cbrt(world_size);
   int prev = 0;
   int curr = 1;
@@ -183,11 +199,10 @@ int main(int argc, char *argv[]) {
                   MPI_COMM_WORLD);
   }
 
-  if (world_rank == 0) {
+  if (!silent_flag && world_rank == 0) {
     printf("global error:");
     cout << global_err << "\n";
   }
-
   MPI_Finalize();
 
   return 0;
