@@ -11,7 +11,7 @@ for N in 11 35 59 119; do
     for t in 1 8 27 64; do
           /usr/bin/time -o $tmp_file_name -f "%e" mpiexec -n $t ./mpi_project --silent $N
           exec_times[$t]="$(grep -oP "\d+.*\d+" $tmp_file_name)"
-          echo "Analysis for $N with $t processes is done."
+          echo "Analysis for N=$N with $t processes is done."
           
     done
     s8=$(bc <<<"scale=3; ${exec_times[1]} / ${exec_times[8]}")
