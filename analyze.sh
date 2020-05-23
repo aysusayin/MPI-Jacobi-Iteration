@@ -7,7 +7,7 @@ echo "Program compiled"
 lines=('N,T1,T8,T27,T64,S8,S27,S64')
 tmp_file_name="tmp_file"
 
-for N in 11 35 59 119; do
+for N in 11 35 59 71; do
     for t in 1 8 27 64; do
           /usr/bin/time -o $tmp_file_name -f "%e" mpiexec -n $t ./mpi_project --silent $N
           exec_times[$t]="$(grep -oP "\d+.*\d+" $tmp_file_name)"
