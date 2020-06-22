@@ -1,5 +1,5 @@
 # MPI-Jacobi-Iteration
-## This is a homework for CMPE 478: Parallel Processing lecture in Bogazici University
+This is a homework for CMPE 478: Parallel Processing lecture in Bogazici University
 ### Solving Poisson Equation with Jacobi iteration
 In this homework, we needed to solve systems of equations that arise from the
 discretization of Poisson’s equation on a cube domain. The poissons equation is the following:
