@@ -18,7 +18,7 @@ To exploit MPI, I divided the domain into subcubes. Each processor works on a su
 
 Example:
 
-![alt text](https://i.ibb.co/dPBWNrZ/cube.jpg)
+![alt text](cube.jpg)
 
 Then jacobi iteration is done in each processor. The local error is calculated by taking the difference of previous and the current values. Then all local errors are summed up using reduction method. When the global error is less then the predetermined error threshold, iteration stops. 
 
